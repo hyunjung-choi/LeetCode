@@ -3,7 +3,7 @@
  * https://leetcode.com/problems/license-key-formatting
  */
 
-fun licenseKeyFormatting(s: String, k: Int): String {
+private fun licenseKeyFormatting(s: String, k: Int): String {
     var licenseKeyUppercase = s.uppercase().filter { it.isLetterOrDigit() }
     val firstGroup = licenseKeyUppercase.length % k
     val count = licenseKeyUppercase.length / k
