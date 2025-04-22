@@ -7,7 +7,7 @@ const val MOD = 1_000_000_007
 const val MAX = 10_001
 
 private fun idealArrays(n: Int, maxValue: Int): Int {
-    val count = Array(MAX) { IntArray(15) } // count[val][length] = val로 끝나는 length짜리 수열 수
+    val count = Array(MAX) { IntArray(15) }
     for (i in 1..maxValue) count[i][1] = 1
 
     for (length in 2..14) {
