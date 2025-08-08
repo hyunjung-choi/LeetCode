@@ -5,35 +5,30 @@ import java.util.*
  * https://leetcode.com/problems/merge-k-sorted-lists
  */
 
-private class ListNode(var `val`: Int) {
-    var next: ListNode? = null
-}
-
-private class Solution {
-    fun mergeKLists(lists: Array<ListNode?>): ListNode? {
-        val minHeap = PriorityQueue<ListNode> { a, b ->
-            a.`val` - b.`val`
-        }
-
-        for (list in lists) {
-            list?.let { minHeap.add(it) }
-        }
-
-        val dummy = ListNode(0)
-        var current = dummy
-
-        while (minHeap.isNotEmpty()) {
-            val node = minHeap.poll()
-
-            current.next = node
-            current = node
-
-            node.next?.let { minHeap.add(it) }
-        }
-
-        return dummy.next
+private fun mergeKLists(lists: Array<ListNode?>): ListNode? {
+    val minHeap = PriorityQueue<ListNode> { a, b ->
+        a.`val` - b.`val`
     }
+
+    for (list in lists) {
+        list?.let { minHeap.add(it) }
+    }
+
+    val dummy = ListNode(0)
+    var current = dummy
+
+    while (minHeap.isNotEmpty()) {
+        val node = minHeap.poll()
+
+        current.next = node
+        current = node
+
+        node.next?.let { minHeap.add(it) }
+    }
+
+    return dummy.next
 }
+
 
 fun main() {
     // 예제 1: [[1,4,5],[1,3,4],[2,6]]
@@ -60,7 +55,7 @@ fun main() {
     val lists = arrayOf<ListNode?>(list1, list2, list3)
 
     // 병합된 리스트 출력
-    var result = Solution().mergeKLists(lists)
+    var result = mergeKLists(lists)
     val resultValues = mutableListOf<Int>()
 
     while (result != null) {
