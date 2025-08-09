@@ -3,11 +3,6 @@
  * https://leetcode.com/problems/validate-binary-search-tree/
  */
 
-class TreeNode(var `val`: Int) {
-    var left: TreeNode? = null
-    var right: TreeNode? = null
-}
-
 private fun isValidBST(root: TreeNode?): Boolean {
     val values = mutableListOf<Int>()
     inorderTraversal(root, values)
